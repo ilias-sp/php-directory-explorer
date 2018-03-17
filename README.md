@@ -36,4 +36,4 @@ composer require cebe/markdown
 
 # PREVIEW
 
-![Preview image](preview/preview.jpg?raw=true "Preview image")
+![Preview image](preview/preview.png?raw=true "Preview image")
