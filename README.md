@@ -9,7 +9,7 @@ You will need a web server that can execute PHP code to start on your PC. PHP pr
 
 # HOW TO INSTALL
 
-The tool was designed to have all code in a single file (index.php), making it convenient to install at the root of the directory tree that you want to browse. To install, you can downlowd the software using the git clone or the provided zip file, or just download the index.php file, by clicking [here](https://raw.githubusercontent.com/ilias-sp/php-directory-explorer/master/index.php).
+The tool was designed to have all code in a single file (index.php), making it convenient to install at the root of the directory tree that you want to browse. To install, you can downlowd the software using the git clone or the provided zip file, or just download the index.php file, by clicking [here](index.php).
 
 
 # HOW TO RUN
@@ -36,3 +36,4 @@ composer require cebe/markdown
 
 # PREVIEW
 
+![Preview image](preview/preview.jpg?raw=true "Preview image")
