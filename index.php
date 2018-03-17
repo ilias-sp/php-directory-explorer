@@ -217,13 +217,8 @@ $LEFT_TITLE = 'BROWSE';
 $LEFT_AREA = '';
 $RIGHT_AREA = '';
 
-// var_dump(get_declared_classes());
-// exit;
-
-// echo $template;
-// echo '<pre>';
-
 $root_path = __DIR__;
+
 if (isset($_GET['path']))
 {
     $requested_path = $_GET['path'];
@@ -245,6 +240,7 @@ if ($requested_path === '/')
 
 // -------------------------------------------------
 // LEFT AREA PROCESSING:
+
 if (is_dir($requested_full_path))
 {
     $LEFT_TITLE = ($requested_path === '') ? 'BROWSE' : $requested_path;
@@ -282,7 +278,7 @@ elseif (is_file($requested_full_path))
 }
 else
 {
-    // misspelled URL, redirect to root
+    // misspelled URL, redirect to root:
     header('Location: /');
     exit;
 }
@@ -293,6 +289,7 @@ $html_code = preg_replace('/##LEFT_AREA##/', $LEFT_AREA, $html_code);
 
 // -------------------------------------------------
 // RIGHT AREA PROCESSING:
+
 if (is_file($requested_full_path))
 {
     $RIGHT_AREA = file_get_contents($requested_full_path);
