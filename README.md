@@ -20,6 +20,9 @@ You can integrate the directory tree you want to browse with a PHP capable web s
 php -S 0.0.0.0:33333 -t .
 ```
 
+Alternatively, you can use the scripts supplied in `scripts` folder. Copy first the one for your OS to the root folder where the index.php resides.
+
+
 The above will start a web server that listens on port 33333. To browse it via your web browser, head on to:
 
 [http://127.0.0.1:33333/](http://127.0.0.1:33333/)
