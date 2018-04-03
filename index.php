@@ -115,9 +115,11 @@ $html_code = '
 <style>
 
 body {
-  font-size: 14px;
-  font-family: "Consolas", "Arial";
-  text-shadow: 0 2px 2px #b6701e;
+  font-family: "Roboto Mono", "Roboto", "lucida grande", tahoma, verdana, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5rem;
+//   text-shadow: 0 1px 1px #b6701e;
   color: white;
   background-color: #111;
   overflow: hidden;
@@ -178,6 +180,19 @@ a:hover {
 
 .padded {
     padding: 20px;
+}
+
+table {
+    border-width: 1px 0 0 1px;
+    border-color: #bbb;
+    border-style: solid;
+}
+
+table td, table th {
+    border-width: 0 1px 1px 0;
+    border-color: #bbb;
+    border-style: solid;
+    padding: 10px;
 }
 
 </style>
@@ -296,10 +311,10 @@ if (is_file($requested_full_path))
 
     if (mb_substr(mb_strtolower($requested_path), mb_strlen($requested_path) - 2, mb_strlen($requested_path)) === 'md')
     {
-        if (class_exists('\cebe\markdown\Markdown'))
+        if (class_exists('Parsedown'))
         {
-            $parser = new \cebe\markdown\Markdown();
-            $RIGHT_AREA = '<pre>' . "\n" . $parser->parse($RIGHT_AREA) . "\n" . '</pre>';
+            $parser = new Parsedown();
+            $RIGHT_AREA = '<pre>' . "\n" . $parser->text($RIGHT_AREA) . "\n" . '</pre>';
         }
         else
         {
