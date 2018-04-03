@@ -120,13 +120,13 @@ body {
   font-weight: 400;
   line-height: 1.5rem;
 //   text-shadow: 0 1px 1px #b6701e;
-  color: white;
+  color: #9c9c9c;
   background-color: #111;
   overflow: hidden;
 }
 
 section {
-  color: #fff;
+//   color: #111;
   text-align: left;
 }
 
@@ -182,18 +182,241 @@ a:hover {
     padding: 20px;
 }
 
-table {
-    border-width: 1px 0 0 1px;
-    border-color: #bbb;
-    border-style: solid;
-}
 
-table td, table th {
-    border-width: 0 1px 1px 0;
-    border-color: #bbb;
-    border-style: solid;
-    padding: 10px;
-}
+:root {
+    background: #222;
+    height: 100%;
+  }
+  
+  ::-webkit-scrollbar {
+      display: none;
+  }
+  
+  ::selection {
+      background: rgba(128,128,128,.2);
+  }
+  
+  /* ~ */
+  
+  a {
+      color: #49c;
+  }
+  
+  body {
+      -webkit-font-smoothing: antialiased;
+      background: #222;
+      color: #9c9c9c;
+      height: 100%;
+  }
+  
+  code {
+      color: #9c9c9c;
+  }
+  
+  html {
+      overflow: -moz-scrollbars-none;
+  }
+  
+  pre {
+      margin: 0;
+      white-space: -moz-pre-wrap;
+      white-space: -o-pre-wrap;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+  }
+  
+  span.fa-home {
+    width: 18px;
+  }
+  
+  /*
+   *
+   * nav
+   *
+   */
+  
+  nav {
+      padding: 20px;
+  }
+  
+  nav a {
+      color: #777;
+  }
+  
+  nav section.right {
+      float: right;
+  }
+  
+  /*
+   *
+   * td
+   *
+   */
+  
+  div.td {
+      float: left;
+      width: 35%;
+  }
+  
+  div.td div {
+      padding: 20px;
+  }
+  
+  /*
+   *
+   * head
+   *
+   */
+  
+  div.head {
+      background: #222;
+      color: #777;
+  }
+  
+  div.head a {
+      color: #ddd;
+  }
+  
+  div.head strong {
+      font-weight: normal;
+      color: #ddd;
+  }
+  
+  span.highlight {
+      color: #7d7;
+  }
+  
+  /*
+   *
+   * ~
+   *
+   */
+  
+  div.body {
+      background: #222;
+      bottom: 0;
+      color: #777;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 128px;
+  }
+  
+  div.body a {
+      color: #ddd;
+  }
+  
+  div.body strong {
+      font-weight: normal;
+      color: #ddd;
+  }
+  
+  /*
+   *
+   * output
+   *
+   */
+  
+  .output a {
+      border: none;
+      color: #59b;
+      padding: 0;
+  }
+  
+  .output a code {
+      color: #59b;
+  }
+  
+  .output blockquote {
+      background: none;
+      border-left: 3px solid #777;
+      color: #777;
+      margin: 20px 0;
+      padding: 0 0 0 10px;
+  }
+  
+  .output code {
+      background: #333;
+      border: 1px solid #333;
+      padding: 2px 5px;
+  }
+  
+  .output div.footnotes {
+      font-size: 14px;
+  }
+  
+  .output h1, .output h2, .output h3, .output h4, .output h5, .output h6 {
+      line-height: normal;
+      margin: 20px 0;
+  }
+  
+  .output hr {
+      background: transparent url("data:image/gif;base64,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") repeat-x 0 0;
+      border: 0 none;
+      color: #ccc;
+      height: 4px;
+      padding: 0;
+      margin: 15px 0;
+  }
+  
+  .output ol {
+      padding-left: 64px;
+  }
+  
+  .output pre {
+      background: #111;
+      border: 1px solid #111;
+      border-radius: 3px;
+      /* color: #555; */
+      margin-bottom: 10px;
+      padding: 10px;
+  }
+  
+  .output pre code {
+      background: none;
+      border: none;
+      padding: 0;
+  }
+  
+  .output table {
+      border-width: 1px 0 0 1px;
+      border-color: #bbb;
+      border-style: solid;
+  }
+  
+  .output table td, .output table th {
+      border-width: 0 1px 1px 0;
+      border-color: #bbb;
+      border-style: solid;
+      padding: 10px;
+  }
+  
+  /*
+   *
+   * prettify
+   *
+   */
+  
+  span.pln {
+      color: #fff;
+  }
+  
+  span.tag {
+      color: #995c8e;
+  }
+  
+  span.atn {
+      color: #997a5c;
+  }
+  
+  span.pun {
+      color: #995c8e;
+  }
+  
+  span.atv {
+      color: #5c5c99;
+  }
+  
 
 </style>
 
@@ -314,7 +537,7 @@ if (is_file($requested_full_path))
         if (class_exists('Parsedown'))
         {
             $parser = new Parsedown();
-            $RIGHT_AREA = '<pre>' . "\n" . $parser->text($RIGHT_AREA) . "\n" . '</pre>';
+            $RIGHT_AREA = '<div class="output">' . "\n" . $parser->text($RIGHT_AREA) . "\n" . '</div>';
         }
         else
         {

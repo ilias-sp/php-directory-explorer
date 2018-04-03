@@ -30,7 +30,7 @@ The above will start a web server that listens on port 33333. To browse it via y
 
 # MARKDOWN FORMAT SUPPORT
 
-Intended to work on files with .md extension only. To properly display Markdown files, you will need the [erusev/parsedown][https://github.com/erusev/parsedown) markdown parser. To install it, go to the root directory where the index.php file resides and run:
+Intended to work on files with .md extension only. To properly display Markdown files, you will need the [erusev/parsedown](https://github.com/erusev/parsedown) markdown parser. To install it, go to the root directory where the index.php file resides and run:
 
 ```
 composer require erusev/parsedown
