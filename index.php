@@ -96,6 +96,36 @@ function build_sorter($key)
     };
 }
 
+function detect_file_type($requested_path)
+{
+    // $pic_file_extensions = array('png', 'jpg', 'jpeg', 'bmp');
+    // $markdown_file_extensions = array('md');
+    $pic_file_extensions = explode('|', CONST_PICTURE_EXTENSIONS);
+    $markdown_file_extensions = explode('|', CONST_MARKDOWN_EXTENSIONS);
+    
+    //check for image files first:
+    foreach ($pic_file_extensions as $extension)
+    {
+        // echo $extension;
+        
+        if (mb_substr(mb_strtolower($requested_path), mb_strlen($requested_path) - mb_strlen($extension), mb_strlen($requested_path)) === $extension)
+        {
+            return 'PICTURE';
+        }
+    }
+
+    //check for markdown files:
+    foreach ($markdown_file_extensions as $extension)
+    {
+        // echo $extension;
+
+        if (mb_substr(mb_strtolower($requested_path), mb_strlen($requested_path) - mb_strlen($extension), mb_strlen($requested_path)) === $extension)
+        {
+            return 'MARKDOWN';
+        }
+    } 
+}
+
 
 // -------------------------------------------------
 // -------------------------------------------------
@@ -104,6 +134,8 @@ function build_sorter($key)
 define ('CONST_MARKDOWN_CLASS_MISSING', '<div style="background-color: red">To display Markdown files properly, install the <a href="https://github.com/cebe/markdown" style="color: black; font-weight: bold;">cebe/markdown library.</a><br/><br/>To install, run (in the root directory): <br/><br/><span style="font-weight: bold; color: black;">composer require cebe/markdown</span><br/><br/></div>');
 define ('CONST_PROJECT_NAME', 'PHP directory explorer');
 define ('CONST_PROJECT_VERSION', 'v2.1');
+define ('CONST_PICTURE_EXTENSIONS', 'png|jpg|jpeg|bmp');
+define ('CONST_MARKDOWN_EXTENSIONS', 'md');
 
 $html_code = '
 <!DOCTYPE html>
@@ -532,7 +564,7 @@ if (is_file($requested_full_path))
 {
     $RIGHT_AREA = file_get_contents($requested_full_path);
 
-    if (mb_substr(mb_strtolower($requested_path), mb_strlen($requested_path) - 2, mb_strlen($requested_path)) === 'md')
+    if (detect_file_type($requested_path) === 'MARKDOWN')
     {
         if (class_exists('Parsedown'))
         {
@@ -542,9 +574,13 @@ if (is_file($requested_full_path))
         else
         {
             $WARNING_TEXT = CONST_MARKDOWN_CLASS_MISSING;
-        }        
+        }
     }
-    else
+    elseif (detect_file_type($requested_path) === 'PICTURE')
+    {
+        $RIGHT_AREA = '<div class="output" style="text-align:center;"><img src="' . $requested_path . '"</></div>';
+    }
+    else // assume its a text file, attempt to print it
     {
         $RIGHT_AREA = '<pre>' . "\n" . '<p>' . htmlspecialchars($RIGHT_AREA) . '</p>' . "\n" . '</pre>';
     }
