@@ -49,7 +49,7 @@ function get_dir_file_info($source_dir, $top_level_only = TRUE, $_recursion = FA
 }
 
 // CodeIgniter function:
-function get_file_info($file, $returned_values = array('name', 'server_path', 'size', 'date'))
+function get_file_info($file, $returned_values = array('name', 'server_path', 'size', 'date', 'is_file'))
 {
     if ( ! file_exists($file))
     {
@@ -88,6 +88,9 @@ function get_file_info($file, $returned_values = array('name', 'server_path', 's
                 break;
             case 'fileperms':
                 $fileinfo['fileperms'] = fileperms($file);
+                break;
+            case 'is_file':
+                $fileinfo['is_file'] = (is_file($file)) ? TRUE : FALSE;
                 break;
         }
     }
@@ -548,7 +551,7 @@ if (is_dir($requested_full_path))
     usort($directory_objects, build_sorter('name'));
     
     foreach ($directory_objects as $directory_object)
-    {
+    {        
         if (class_exists('Websemantics\FileIcons\FileIcons'))
         {
             $class_name = $web_icons->getClassWithColor(basename($directory_object['name']));
@@ -558,7 +561,17 @@ if (is_dir($requested_full_path))
         {
             $file_name_to_print = basename($directory_object['name']);
         }
-        $LEFT_AREA .= '<a href="?path=' . $requested_path . '/' . basename($directory_object['name']) . '" title="' . basename($directory_object['name']) . ' - ' . file_size_human_friendly(basename($directory_object['size'])) . '">' . $file_name_to_print . '</a><br />';
+        //
+        if (basename($directory_object['is_file']) == TRUE)
+        {
+            $object_title = basename($directory_object['name']) . ' - ' . file_size_human_friendly(basename($directory_object['size']));
+        }
+        else
+        {
+            $object_title = basename($directory_object['name']) . ' (Folder)';
+        }
+        //
+        $LEFT_AREA .= '<a href="?path=' . $requested_path . '/' . basename($directory_object['name']) . '" title="' . $object_title . '">' . $file_name_to_print . '</a><br />';
     }
 
     if ($requested_full_path !== $root_path && $requested_path !== '/')
@@ -585,7 +598,17 @@ elseif (is_file($requested_full_path))
         {
             $file_name_to_print = basename($directory_object['name']);
         }
-        $LEFT_AREA .= '<a href="?path=' . $print_requested_path . basename($directory_object['name']) . '" title="' . basename($directory_object['name']) . ' - ' . file_size_human_friendly(basename($directory_object['size'])) . '">' . $file_name_to_print . '</a><br />';
+        //
+        if (basename($directory_object['is_file']) == TRUE)
+        {
+            $object_title = basename($directory_object['name']) . ' - ' . file_size_human_friendly(basename($directory_object['size']));
+        }
+        else
+        {
+            $object_title = basename($directory_object['name']) . ' (Folder)';
+        }
+        //
+        $LEFT_AREA .= '<a href="?path=' . $print_requested_path . basename($directory_object['name']) . '" title="' . $object_title . '">' . $file_name_to_print . '</a><br />';
     }
 
     if ($requested_full_path !== $root_path && str_replace('\\','/', dirname($requested_path)) !== '/')
