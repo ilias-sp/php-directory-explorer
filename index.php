@@ -564,7 +564,7 @@ if (is_dir($requested_full_path))
         //
         if (basename($directory_object['is_file']) == TRUE)
         {
-            $object_title = basename($directory_object['name']) . ' - ' . file_size_human_friendly(basename($directory_object['size']));
+            $object_title = basename($directory_object['name']) . '&#013;' . file_size_human_friendly(basename($directory_object['size'])) . '&#013;' . date('d-M-Y, H:i:s', $directory_object['date']) ;
         }
         else
         {
@@ -601,7 +601,7 @@ elseif (is_file($requested_full_path))
         //
         if (basename($directory_object['is_file']) == TRUE)
         {
-            $object_title = basename($directory_object['name']) . ' - ' . file_size_human_friendly(basename($directory_object['size']));
+            $object_title = basename($directory_object['name']) . '&#013;' . file_size_human_friendly(basename($directory_object['size'])) . '&#013;' . date('d-M-Y, H:i:s', $directory_object['date']) ;
         }
         else
         {
