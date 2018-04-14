@@ -138,12 +138,15 @@ function file_size_human_friendly($file_size)
 {
     if ($file_size < 1024) {
         $ret_val = $file_size . ' Bytes';
-    }        
+    }
     elseif ($file_size < 1048576) {
         $ret_val = round($file_size/1024, 1) . ' KB';
-    }        
-    else {
+    }
+    elseif ($file_size < 1073741824) {
         $ret_val = round($file_size/1048576, 1) . ' MB';
+    }
+    else {
+        $ret_val = round($file_size/1073741824, 1) . ' GB';
     }
     //
     return $ret_val;
