@@ -36,6 +36,14 @@ Intended to work on files with .md extension only. To properly display Markdown 
 composer require erusev/parsedown
 ```
 
+# FILE ICONS SUPPORT
+
+To enable the file icons feature, the library is supporting [websemantics/file-icons](https://github.com/websemantics/file-icons). To install it, go to the root directory where the index.php file resides and run:
+
+```
+composer require websemantics/file-icons
+```
+
 
 # PREVIEW
 

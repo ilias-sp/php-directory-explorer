@@ -5,6 +5,13 @@ if (file_exists('vendor/autoload.php'))
     require_once('vendor/autoload.php');
 }
 
+// initialize classes:
+
+if (class_exists('Websemantics\FileIcons\FileIcons'))
+{
+    $web_icons = new Websemantics\FileIcons\FileIcons();
+}
+
 // CodeIgniter function: 
 function get_dir_file_info($source_dir, $top_level_only = TRUE, $_recursion = FALSE)
 {
@@ -127,6 +134,21 @@ function detect_file_type($requested_path)
 }
 
 
+function file_size_human_friendly($file_size)
+{
+    if ($file_size < 1024) {
+        $ret_val = $file_size . ' Bytes';
+    }        
+    elseif ($file_size < 1048576) {
+        $ret_val = round($file_size/1024, 1) . ' KB';
+    }        
+    else {
+        $ret_val = round($file_size/1048576, 1) . ' MB';
+    }
+    //
+    return $ret_val;
+}
+
 // -------------------------------------------------
 // -------------------------------------------------
 // -------------------------------------------------
@@ -137,13 +159,15 @@ define ('CONST_PROJECT_VERSION', 'v2.1');
 define ('CONST_PICTURE_EXTENSIONS', 'png|jpg|jpeg|bmp');
 define ('CONST_MARKDOWN_EXTENSIONS', 'md');
 
+$websemantics_css = (class_exists('Websemantics\FileIcons\FileIcons')) ? $web_icons::includeCss() : "";
+
 $html_code = '
 <!DOCTYPE html>
 <html>
 <head>
 <title>##HTML_TITLE##</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+' . $websemantics_css . '
 <style>
 
 body {
@@ -182,10 +206,12 @@ h1 {
 
 a, a:focus {
   color: #e67e22;
+  text-decoration: none;
 }
 
 a:hover {
   color: #fba508;
+  text-decoration: none;
 }
 
 /* Pattern styles */
@@ -520,7 +546,16 @@ if (is_dir($requested_full_path))
     
     foreach ($directory_objects as $directory_object)
     {
-        $LEFT_AREA .= '<a href="?path=' . $requested_path . '/' . basename($directory_object['name']) . '">' . basename($directory_object['name']) . '</a><br />';
+        if (class_exists('Websemantics\FileIcons\FileIcons'))
+        {
+            $class_name = $web_icons->getClassWithColor(basename($directory_object['name']));
+            $file_name_to_print = '<i class="' . $class_name . '"></i>&nbsp;&nbsp;' . basename($directory_object['name']);
+        }
+        else
+        {
+            $file_name_to_print = basename($directory_object['name']);
+        }
+        $LEFT_AREA .= '<a href="?path=' . $requested_path . '/' . basename($directory_object['name']) . '" title="' . basename($directory_object['name']) . ' - ' . file_size_human_friendly(basename($directory_object['size'])) . '">' . $file_name_to_print . '</a><br />';
     }
 
     if ($requested_full_path !== $root_path && $requested_path !== '/')
@@ -538,7 +573,16 @@ elseif (is_file($requested_full_path))
     foreach ($directory_objects as $directory_object)
     {
         $print_requested_path = (str_replace('\\','/', dirname($requested_path)) === '/') ? str_replace('\\','/', dirname($requested_path)) : str_replace('\\','/', dirname($requested_path)) . '/';
-        $LEFT_AREA .= '<a href="?path=' . $print_requested_path . basename($directory_object['name']) . '">' . basename($directory_object['name']) . '</a><br />';
+        if (class_exists('Websemantics\FileIcons\FileIcons'))
+        {   
+            $class_name = $web_icons->getClassWithColor(basename($directory_object['name']));
+            $file_name_to_print = '<i class="' . $class_name . '"></i>&nbsp;&nbsp;' . basename($directory_object['name']);
+        }
+        else
+        {
+            $file_name_to_print = basename($directory_object['name']);
+        }
+        $LEFT_AREA .= '<a href="?path=' . $print_requested_path . basename($directory_object['name']) . '" title="' . basename($directory_object['name']) . ' - ' . file_size_human_friendly(basename($directory_object['size'])) . '">' . $file_name_to_print . '</a><br />';
     }
 
     if ($requested_full_path !== $root_path && str_replace('\\','/', dirname($requested_path)) !== '/')
