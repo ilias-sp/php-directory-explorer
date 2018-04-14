@@ -480,7 +480,7 @@ a:hover {
   span.atv {
       color: #5c5c99;
   }
-  
+
 
 </style>
 
@@ -497,6 +497,11 @@ a:hover {
             </div>
             <br/>
 ##LEFT_AREA##
+        </div>
+        <div class="padded" style="min-height: 100px;">
+        </div>
+        <div class="padded" style="height: 50px; width: 80%; font-size:80%; text-align: right;">
+            <a class="github" href="https://github.com/ilias-sp/php-directory-explorer" target="_blank" style="vertical-align:middle;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADvklEQVRYhdWW3W8UVRTA56FJH035G8Y0PNuk1t353Ll3ZzozdzozXcAWUjA2RYEY3SYaojExQIwKxvCxbdcHoqGVKEbFYmhIeGiKLaXog0EpiezWvsyotCYMkS5weChsu529s7NtH/Qk921yf797zrnnDsP8n4Jl2UYJ2YKo2f2y5uZk1R2WVXdY0pxTYtrJ8pjwLMs2bjqYV+ytkuYOSZr9T6q9E6KWpDmLkmoPJCTSvGFwW1t6i6zaeVlzH9UCr12y5j6SVHsgqXc1rQuexFarrLl/1AsOiahuQUSkpS64pFppWXXubRReLovqBqJuKbHgomI+v5nw5XI4wCEzSGKrNRLe1pbeshlpXwsXsQUitkDA5lxS1+k9Iat2nrbR+JUpOPfNKOx8aR8Vhs3t8MGxEzA1fR3eeudQBbwsgYx8VTiv2Ftp3e7s2ANPo1QqwfjEJNwuFCEI7sG/9+/Dn3/9DdMzP8Pvt4vl7858cS4EF7EFXMp42JJQw1dU0twh2sk6tvVAPREEAXx6+vOqAsulIEMVcJZlG6OGTPeeV2FpaSk23Pd9+OzMWaoAh4wFhmEaVk6PbCGqkcYnJuuC+74PnudBV09fhARJrFw9ze6Paqw4p18Nf7o++vgEVYBHJLvS/ZqbowmYnbvWBfd9Hwbyp+kCCsmtun7uME1A0TNQKpXqhtfKgID0kVgCqfZOuPHbbN1w3/dh74H+eAKS5pyKEnj/6PG64ddmfgIp3RGvBGLaydYaqecvjMWG35y9Bd2791LhoSbkMeFpDfjl1+ehp/cApNo74c23D8HFS5fh5uytEHR+fh4mrkzCJycHQe94MRIuYgt4bL2wZhA5i9UkDr57BO4sLMK2nb3l2d63Pwue51UIjP4wVhO6Kv13KgYRwzCMpDqDtPR/N3oRfrnxK7yWPQi9r7wOY5cuhzLgeR5gIxNPAJuDobcgIZFm+mO0G6avXY+su+/7QDK7asK5lPGglUfPhgSWs2AP0N5zKd0BPS/vh759b8C3319Yt0BF96+NpN7VJKWdYrWfidVr5OxXVQVMtzsSnlTMgqJknqEKMAzDiIi0SKob0OAituC9wx/C1ekZKM7Nged5UCgU4cfJKdBtevfz2LyL9cxzkfCyhG4pHDKDuF0do+nuxv4pLZcDW60CNuc2Ck8qZiH2yUMSut4kICPPpYyH9YK5lPGAV0iuZs3jREtCbRYwGeKQsRBnyPDYHKRetQ1GA4dIgkckyyskJyB9RED6CK+QHI9I9sl4bai5y38pHgPep33DB+ZVXQAAAABJRU5ErkJggg==" style="height:20px; vertical-align: middle;">&nbsp;&nbsp;php-directory-explorer</a>
         </div>
     </article>
   </div>
