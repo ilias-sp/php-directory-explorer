@@ -559,8 +559,15 @@ if (is_dir($requested_full_path))
     {        
         if (class_exists('Websemantics\FileIcons\FileIcons'))
         {
-            $class_name = $web_icons->getClassWithColor(basename($directory_object['name']));
-            $file_name_to_print = '<i class="icon ' . $class_name . '"></i>&nbsp;&nbsp;' . basename($directory_object['name']);
+            if (basename($directory_object['is_file']) == TRUE)
+            {
+                $class_name = $web_icons->getClassWithColor(basename($directory_object['name']));
+                $file_name_to_print = '<i class="icon ' . $class_name . '"></i>&nbsp;&nbsp;' . basename($directory_object['name']);
+            }
+            else
+            {
+                $file_name_to_print = '<i class="icon folder-icon"></i>&nbsp;&nbsp;' . basename($directory_object['name']);
+            }
         }
         else
         {
@@ -596,8 +603,15 @@ elseif (is_file($requested_full_path))
         $print_requested_path = (str_replace('\\','/', dirname($requested_path)) === '/') ? str_replace('\\','/', dirname($requested_path)) : str_replace('\\','/', dirname($requested_path)) . '/';
         if (class_exists('Websemantics\FileIcons\FileIcons'))
         {   
-            $class_name = $web_icons->getClassWithColor(basename($directory_object['name']));
-            $file_name_to_print = '<i class="icon ' . $class_name . '"></i>&nbsp;&nbsp;' . basename($directory_object['name']);
+            if (basename($directory_object['is_file']) == TRUE)
+            {
+                $class_name = $web_icons->getClassWithColor(basename($directory_object['name']));
+                $file_name_to_print = '<i class="icon ' . $class_name . '"></i>&nbsp;&nbsp;' . basename($directory_object['name']);
+            }
+            else
+            {
+                $file_name_to_print = '<i class="icon folder-icon"></i>&nbsp;&nbsp;' . basename($directory_object['name']);
+            }
         }
         else
         {

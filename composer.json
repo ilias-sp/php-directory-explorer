@@ -1,0 +1,12 @@
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/ilias-sp/file-icons"
+        }
+    ],
+    "require": {
+        "erusev/parsedown": "^1.7",
+        "ilias-sp/file-icons": "*"
+    }
+}

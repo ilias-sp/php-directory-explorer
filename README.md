@@ -30,7 +30,13 @@ The above will start a web server that listens on port 33333. To browse it via y
 
 # MARKDOWN FORMAT SUPPORT
 
-Intended to work on files with .md extension only. To properly display Markdown files, you will need the [erusev/parsedown](https://github.com/erusev/parsedown) markdown parser. To install it, go to the root directory where the index.php file resides and run:
+Intended to work on files with .md extension only. To properly display Markdown files, you will need the [erusev/parsedown](https://github.com/erusev/parsedown) markdown parser. To install it, along with all the other 3rd party libraries supported, make sure you have downloaded the `composer.json` from this repository and run:
+
+```
+composer install
+```
+
+Alternatively, to install only this library, go to the root directory where the index.php file resides and run:
 
 ```
 composer require erusev/parsedown
@@ -38,12 +44,19 @@ composer require erusev/parsedown
 
 # FILE ICONS SUPPORT
 
-To enable the file icons feature, the library is supporting [websemantics/file-icons](https://github.com/websemantics/file-icons). To install it, go to the root directory where the index.php file resides and run:
+To enable the file icons feature, the [websemantics/file-icons](https://github.com/websemantics/file-icons) library is supported. To install it, along with all the other 3rd party libraries supported, make sure you have downloaded the `composer.json` from this repository and run:
 
 ```
-composer require websemantics/file-icons
+composer install
 ```
 
+Alternatively, to install only this library, go to the root directory where the index.php file resides and run:
+
+```
+composer require ilias-sp/file-icons
+```
+
+(Its a forked version, to support more file icons)
 
 # PREVIEW
 
