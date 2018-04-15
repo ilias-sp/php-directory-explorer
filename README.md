@@ -4,12 +4,12 @@ The purpose of this tool is to provide the convenience to browse your code or no
 
 # PREREQUISITES
 
-You will need a web server that can execute PHP code to start on your PC. PHP provides a built-in obe which is ideal for the job.
+You will need a web server that can execute PHP code to start on your PC. PHP provides a built-in one, which is ideal for the job.
 
 
 # HOW TO INSTALL
 
-The tool was designed to have all code in a single file (index.php), making it convenient to install at the root of the directory tree that you want to browse. To install, you can downlowd the software using the git clone or the provided zip file, or just download the index.php file, by clicking [here](index.php).
+The tool was designed to have all code in a single file `index.php`, making it convenient to install/port at the root of the directory tree that you want to browse. To install, you can get the library either by using `git clone https://github.com/ilias-sp/php-directory-explorer.git`, or downloading the provided zip file, or just download the index.php file, by clicking [here](index.php).
 
 
 # HOW TO RUN
@@ -20,43 +20,20 @@ You can integrate the directory tree you want to browse with a PHP capable web s
 php -S 0.0.0.0:33333 -t .
 ```
 
-Alternatively, you can use the scripts supplied in `scripts` folder. Copy first the one for your OS to the root folder where the index.php resides.
-
+Alternatively, you can use the scripts supplied in `scripts` folder. First, you will have to copy the one for your OS to the root folder where the index.php resides.
 
 The above will start a web server that listens on port 33333. To browse it via your web browser, head on to:
 
 [http://127.0.0.1:33333/](http://127.0.0.1:33333/)
 
 
-# MARKDOWN FORMAT SUPPORT
+# 3RD PARTY LIBRARIES 
 
-Intended to work on files with .md extension only. To properly display Markdown files, you will need the [erusev/parsedown](https://github.com/erusev/parsedown) markdown parser. To install it, along with all the other 3rd party libraries supported, make sure you have downloaded the `composer.json` from this repository and run:
-
-```
-composer install
-```
-
-Alternatively, to install only this library, go to the root directory where the index.php file resides and run:
-
-```
-composer require erusev/parsedown
-```
-
-# FILE ICONS SUPPORT
-
-To enable the file icons feature, the [websemantics/file-icons](https://github.com/websemantics/file-icons) library is supported. To install it, along with all the other 3rd party libraries supported, make sure you have downloaded the `composer.json` from this repository and run:
+`php-directory-explorer` uses [erusev/parsedown](https://github.com/erusev/parsedown) markdown parser to properly display Markdown files, and [websemantics/file-icons](https://github.com/websemantics/file-icons) (forked version of it) for displaying icons for common file types. To install both libraries, download the `composer.json` file from this repository in the folder where the `index.php` resides, and install by running:
 
 ```
 composer install
 ```
-
-Alternatively, to install only this library, go to the root directory where the index.php file resides and run:
-
-```
-composer require ilias-sp/file-icons
-```
-
-(Its a forked version, to support more file icons)
 
 # PREVIEW
 

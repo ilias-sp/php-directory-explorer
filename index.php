@@ -208,6 +208,7 @@ article {
 h1 {
   font-size: 1.75rem;
   margin: 0 0 0.75rem 0;
+  line-height: 2.2rem;
 }
 
 a, a:focus {
