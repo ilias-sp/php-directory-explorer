@@ -233,6 +233,7 @@ a:hover {
   left: 0px;
   width: 20%;
   overflow-y: auto;
+  word-wrap: break-word;
 }
 
 .right-half {
