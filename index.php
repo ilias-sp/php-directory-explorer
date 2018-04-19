@@ -164,6 +164,7 @@ define ('CONST_PROJECT_NAME', 'PHP directory explorer');
 define ('CONST_PROJECT_VERSION', 'v2.1');
 define ('CONST_PICTURE_EXTENSIONS', 'png|jpg|jpeg|bmp');
 define ('CONST_MARKDOWN_EXTENSIONS', 'md');
+define ('INDEX_SCRIPT', basename(__FILE__));
 
 $websemantics_css = (class_exists('Websemantics\FileIcons\FileIcons')) ? $web_icons::includeCss() : "";
 
@@ -585,12 +586,12 @@ if (is_dir($requested_full_path))
             $object_title = basename($directory_object['name']) . ' (Folder)';
         }
         //
-        $LEFT_AREA .= '<a href="?path=' . $requested_path . '/' . basename($directory_object['name']) . '" title="' . $object_title . '">' . $file_name_to_print . '</a><br />';
+        $LEFT_AREA .= '<a href="/' . INDEX_SCRIPT . '?path=' . $requested_path . '/' . basename($directory_object['name']) . '" title="' . $object_title . '">' . $file_name_to_print . '</a><br />';
     }
 
     if ($requested_full_path !== $root_path && $requested_path !== '/')
     {
-        $LEFT_AREA = '<a href="?path=' . str_replace('\\','/', dirname($requested_path)) . '">..</a><br />' . $LEFT_AREA;
+        $LEFT_AREA = '<a href="/' . INDEX_SCRIPT . '?path=' . str_replace('\\','/', dirname($requested_path)) . '">..</a><br />' . $LEFT_AREA;
     }
 }
 elseif (is_file($requested_full_path))
@@ -629,12 +630,12 @@ elseif (is_file($requested_full_path))
             $object_title = basename($directory_object['name']) . ' (Folder)';
         }
         //
-        $LEFT_AREA .= '<a href="?path=' . $print_requested_path . basename($directory_object['name']) . '" title="' . $object_title . '">' . $file_name_to_print . '</a><br />';
+        $LEFT_AREA .= '<a href="/' . INDEX_SCRIPT . '?path=' . $print_requested_path . basename($directory_object['name']) . '" title="' . $object_title . '">' . $file_name_to_print . '</a><br />';
     }
 
     if ($requested_full_path !== $root_path && str_replace('\\','/', dirname($requested_path)) !== '/')
     {
-        $LEFT_AREA = '<a href="?path=' . str_replace('\\','/', dirname(dirname($requested_path))) . '">..</a><br />' . $LEFT_AREA;
+        $LEFT_AREA = '<a href="/' . INDEX_SCRIPT . '?path=' . str_replace('\\','/', dirname(dirname($requested_path))) . '">..</a><br />' . $LEFT_AREA;
     }
 }
 else
