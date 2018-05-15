@@ -112,6 +112,7 @@ function detect_file_type($requested_path)
     // $markdown_file_extensions = array('md');
     $pic_file_extensions = explode('|', CONST_PICTURE_EXTENSIONS);
     $markdown_file_extensions = explode('|', CONST_MARKDOWN_EXTENSIONS);
+    $html_file_extensions = explode('|', CONST_HTML_EXTENSIONS);
     
     //check for image files first:
     foreach ($pic_file_extensions as $extension)
@@ -133,7 +134,17 @@ function detect_file_type($requested_path)
         {
             return 'MARKDOWN';
         }
-    } 
+    }
+    //check for HTML files:
+        foreach ($html_file_extensions as $extension)
+        {
+            // echo $extension;
+    
+            if (mb_substr(mb_strtolower($requested_path), mb_strlen($requested_path) - mb_strlen($extension), mb_strlen($requested_path)) === $extension)
+            {
+                return 'HTML';
+            }
+        } 
 }
 
 
@@ -159,12 +170,13 @@ function file_size_human_friendly($file_size)
 // -------------------------------------------------
 // -------------------------------------------------
 
+define ('INDEX_SCRIPT', basename(__FILE__));
 define ('CONST_MARKDOWN_CLASS_MISSING', '<div style="background-color: red">To display Markdown files properly, install the <a href="https://github.com/cebe/markdown" style="color: black; font-weight: bold;">cebe/markdown library.</a><br/><br/>To install, run (in the root directory): <br/><br/><span style="font-weight: bold; color: black;">composer require cebe/markdown</span><br/><br/></div>');
 define ('CONST_PROJECT_NAME', 'PHP directory explorer');
 define ('CONST_PROJECT_VERSION', 'v2.1');
 define ('CONST_PICTURE_EXTENSIONS', 'png|jpg|jpeg|bmp');
 define ('CONST_MARKDOWN_EXTENSIONS', 'md');
-define ('INDEX_SCRIPT', basename(__FILE__));
+define ('CONST_HTML_EXTENSIONS', 'html|htm');
 
 $websemantics_css = (class_exists('Websemantics\FileIcons\FileIcons')) ? $web_icons::includeCss() : "";
 
@@ -630,12 +642,12 @@ elseif (is_file($requested_full_path))
             $object_title = basename($directory_object['name']) . ' (Folder)';
         }
         //
-        $LEFT_AREA .= '<a href="/' . INDEX_SCRIPT . '?path=' . $print_requested_path . basename($directory_object['name']) . '" title="' . $object_title . '">' . $file_name_to_print . '</a><br />';
+        $LEFT_AREA .= '<a href="?path=' . $print_requested_path . basename($directory_object['name']) . '" title="' . $object_title . '">' . $file_name_to_print . '</a><br />';
     }
 
     if ($requested_full_path !== $root_path && str_replace('\\','/', dirname($requested_path)) !== '/')
     {
-        $LEFT_AREA = '<a href="/' . INDEX_SCRIPT . '?path=' . str_replace('\\','/', dirname(dirname($requested_path))) . '">..</a><br />' . $LEFT_AREA;
+        $LEFT_AREA = '<a href="?path=' . str_replace('\\','/', dirname(dirname($requested_path))) . '">..</a><br />' . $LEFT_AREA;
     }
 }
 else
@@ -671,6 +683,10 @@ if (is_file($requested_full_path))
     elseif (detect_file_type($requested_path) === 'PICTURE')
     {
         $RIGHT_AREA = '<div class="output" style="text-align:center;"><img src="' . $requested_path . '"</></div>';
+    }
+    elseif (detect_file_type($requested_path) === 'HTML')
+    {
+        $RIGHT_AREA = '<div class="output"><iframe  name="iframe" frameborder="0" style="overflow: hidden; height: 100%; width: 100%; position: absolute;" onload="this.style.height = this.contentWindow.document.body.scrollHeight + \'px\'" height="100%" width="100%" src="' . $_GET['path'] . '" ></iframe></div>';
     }
     else // assume its a text file, attempt to print it
     {
