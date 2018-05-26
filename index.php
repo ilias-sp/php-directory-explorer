@@ -682,7 +682,7 @@ if (is_file($requested_full_path))
     }
     elseif (detect_file_type($requested_path) === 'PICTURE')
     {
-        $RIGHT_AREA = '<div class="output" style="text-align:center;"><img src="' . $requested_path . '"</></div>';
+        $RIGHT_AREA = '<div class="output" style="text-align:center;"><img src="' . $requested_path . '" style="max-width:100%;"></div>';
     }
     elseif (detect_file_type($requested_path) === 'HTML')
     {
